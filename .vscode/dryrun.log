@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/nfs/homes/chsimon/philo'
+make -C my_lib/
+gcc -Wall -Wextra -Werror -g3 -g -pthread obj/main.o obj/sc_threading.o obj/threadator.o obj/thread_utils.o obj/routine.o obj/routine_utils.o obj/shinigami.o obj/init.o obj/validator.o obj/init_db.o obj/init_mutex.o obj/init_time.o obj/params_utils.o obj/sc_mutex.o obj/sc_time.o -L my_lib -o philo -I inc -I my_lib/includes -l_my
+make: Leaving directory '/mnt/nfs/homes/chsimon/philo'
+ 

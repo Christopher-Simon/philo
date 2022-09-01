@@ -1,0 +1,516 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Thu Sep  1 20:03:41 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 24)
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+# environment
+XDG_SESSION_CLASS = user
+# makefile (from 'Makefile', line 3)
+SRC = $(addsuffix .c, main sc_threading threadator thread_utils routine routine_utils shinigami init validator init_db init_mutex init_time params_utils sc_mutex sc_time )
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /mnt/nfs/homes/chsimon/.Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /mnt/nfs/homes/chsimon/philo
+# makefile
+SHELL = /bin/sh
+# makefile (from 'Makefile', line 32)
+RM = rm -rf
+# environment
+GDM_LANG = en
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/code
+# makefile (from 'Makefile', line 29)
+CFLAGS = -Wall -Wextra -Werror -g3 -g -pthread
+# environment
+JOURNAL_STREAM = 9:5449305
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# makefile (from 'Makefile', line 30)
+FCFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread -g -pthread
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+IM_CONFIG_PHASE = 1
+# 'override' directive
+GNUMAKEFLAGS := 
+# makefile (from 'Makefile', line 23)
+OBJ_DIR = obj
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/chsimon/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40599/bus
+# environment
+MANAGERPID = 1052744
+# makefile (from 'Makefile', line 34)
+INCS = -I inc -I my_lib/includes
+# environment
+VSCODE_CWD = /mnt/nfs/homes/chsimon/philo
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session13
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_40599_0As2Ih
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /mnt/nfs/homes/chsimon/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/40599/gnupg/S.gpg-agent:0:1
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+SESSION_MANAGER = local/e1r9p13.clusters.42paris.fr:@/tmp/.ICE-unix/1053267,unix/e1r9p13.clusters.42paris.fr:/tmp/.ICE-unix/1053267
+# environment
+XDG_RUNTIME_DIR = /run/user/40599
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = f809ca6bd2cc4e5cae590f4e5ad4baee
+# makefile (from 'Makefile', line 39)
+LIB = lib_my.a
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/chsimon
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# makefile (from 'Makefile', line 36)
+MY_LIB = my_lib/lib_my.a
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/40599/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1053661
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+PWD = /mnt/nfs/homes/chsimon/philo
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 1053231
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /mnt/nfs/homes/chsimon
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/chsimon/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+LOGNAME = chsimon
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from 'Makefile', line 38)
+PATH_LIB = my_lib/
+# environment
+ZSH = /mnt/nfs/homes/chsimon/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SHLVL = 2
+# makefile (from 'Makefile', line 28)
+CC = gcc
+# environment
+TERMINATOR_UUID = urn:uuid:46456040-394d-4a59-83d4-bac670819c5d
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = chsimon
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# environment
+OLDPWD = /mnt/nfs/homes/chsimon
+# environment
+TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/40599/vscode-d79ec732-1.69.2-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+# default
+MAKEFILES := 
+# makefile (from 'Makefile', line 21)
+SRC_DIR = src
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 40)
+MAKELIB = make -C $(PATH_LIB)
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 26)
+DEPS = $(OBJ:.o=.d)
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile (from 'Makefile', line 1)
+NAME = philo
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
+# environment
+DOCKER_HOST = unix:///run/user/40599/docker.sock
+# environment
+VSCODE_PID = 1054503
+# variable set hash-table stats:
+# Load=122/1024=12%, Rehash=0, Collisions=26/165=16%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 56, inode 196180543): 10 files, no impossibilities.
+# src (device 56, inode 196184188): No files, no impossibilities so far.
+
+# 10 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+obj/%.o: src/%.c
+#  recipe to execute (from 'Makefile', line 52):
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+ 
+my_lib/lib_my.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lib_my.a:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := lib_my.a
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/13=15%
+#  recipe to execute (from 'Makefile', line 49):
+	$(MAKELIB)
+
+# Not a target:
+obj/routine_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/threadator.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: philo
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+philo: lib_my.a obj/main.o obj/sc_threading.o obj/threadator.o obj/thread_utils.o obj/routine.o obj/routine_utils.o obj/shinigami.o obj/init.o obj/validator.o obj/init_db.o obj/init_mutex.o obj/init_time.o obj/params_utils.o obj/sc_mutex.o obj/sc_time.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-09-01 20:02:18.86100418
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'Makefile', line 46):
+	$(CC) $(CFLAGS) $(OBJ) -L my_lib -o $@ $(INCS) -l_my
+
+.PHONY: all clean fclean re bonus
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-09-01 20:02:06.144935172
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+obj/routine.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bonus:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 72):
+	make -C my_lib fclean
+	$(RM) $(NAME)
+	$(RM) my_lib/lib_my.a
+
+# Not a target:
+obj/shinigami.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/validator.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/init_db.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+testf: my_lib/lib_my.a obj/main.o obj/sc_threading.o obj/threadator.o obj/thread_utils.o obj/routine.o obj/routine_utils.o obj/shinigami.o obj/init.o obj/validator.o obj/init_db.o obj/init_mutex.o obj/init_time.o obj/params_utils.o obj/sc_mutex.o obj/sc_time.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 59):
+	$(CC) $(FCFLAGS) $(OBJ) -L my_lib -o $(NAME) $(INCS) -l_my
+	# @./$(NAME)
+
+# Not a target:
+obj/init_time.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+testv: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	--tool=drd \
+	valgrind ./$(NAME)
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/thread_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 77):
+		make fclean
+		make all
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 68):
+	make -C my_lib clean
+	$(RM) $(OBJ) $(BOBJ)
+
+# Not a target:
+obj/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/sc_time.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/sc_threading.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/init_mutex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/params_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/sc_mutex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=29/1024=3%, Rehash=0, Collisions=0/83=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 41 / storage = 424 B / avg = 10 B
+# current buf: size = 8162 B / used = 424 B / count = 41 / avg = 10 B
+
+# strcache performance: lookups = 81 / hit rate = 49%
+# hash-table stats:
+# Load=41/8192=1%, Rehash=0, Collisions=1/81=1%
+# Finished Make data base on Thu Sep  1 20:03:41 2022
+
+ 
