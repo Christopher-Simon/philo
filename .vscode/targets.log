@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep  1 20:03:41 2022
+# Make data base, printed on Fri Sep  2 12:00:10 2022
 
 # Variables
 
@@ -43,8 +43,6 @@ SHELL = /bin/sh
 # makefile (from 'Makefile', line 32)
 RM = rm -rf
 # environment
-GDM_LANG = en
-# environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
@@ -53,7 +51,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 29)
 CFLAGS = -Wall -Wextra -Werror -g3 -g -pthread
 # environment
-JOURNAL_STREAM = 9:5449305
+JOURNAL_STREAM = 9:2393649
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 30)
@@ -75,15 +73,15 @@ XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/chsimon/.local
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/40599/bus
 # environment
-MANAGERPID = 1052744
+MANAGERPID = 454522
 # makefile (from 'Makefile', line 34)
 INCS = -I inc -I my_lib/includes
 # environment
 VSCODE_CWD = /mnt/nfs/homes/chsimon/philo
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session13
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session8
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40599_0As2Ih
+KRB5CCNAME = FILE:/tmp/krb5cc_40599_2HdS2x
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -93,7 +91,7 @@ GPG_AGENT_INFO = /run/user/40599/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e1r9p13.clusters.42paris.fr:@/tmp/.ICE-unix/1053267,unix/e1r9p13.clusters.42paris.fr:/tmp/.ICE-unix/1053267
+SESSION_MANAGER = local/e1r11p5.clusters.42paris.fr:@/tmp/.ICE-unix/455041,unix/e1r11p5.clusters.42paris.fr:/tmp/.ICE-unix/455041
 # environment
 XDG_RUNTIME_DIR = /run/user/40599
 # environment
@@ -101,7 +99,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = f809ca6bd2cc4e5cae590f4e5ad4baee
+INVOCATION_ID = 0db37cc861724373be87c6dc6ac5fc56
 # makefile (from 'Makefile', line 39)
 LIB = lib_my.a
 # default
@@ -119,7 +117,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/40599/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1053661
+GIO_LAUNCHED_DESKTOP_FILE_PID = 455865
 # automatic
 %F = $(notdir $%)
 # environment
@@ -129,7 +127,7 @@ PWD = /mnt/nfs/homes/chsimon/philo
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1053231
+SSH_AGENT_PID = 455000
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -168,10 +166,11 @@ MAKECMDGOALS := all
 QT_IM_MODULE = ibus
 # environment
 SHLVL = 2
+ 
 # makefile (from 'Makefile', line 28)
 CC = gcc
 # environment
-TERMINATOR_UUID = urn:uuid:46456040-394d-4a59-83d4-bac670819c5d
+TERMINATOR_UUID = urn:uuid:9c2964bf-68c0-4eb9-afd5-9d403de5d409
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -196,8 +195,6 @@ TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
-# environment
-LANGUAGE = en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
@@ -253,9 +250,9 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
 DOCKER_HOST = unix:///run/user/40599/docker.sock
 # environment
-VSCODE_PID = 1054503
+VSCODE_PID = 457209
 # variable set hash-table stats:
-# Load=122/1024=12%, Rehash=0, Collisions=26/165=16%
+# Load=120/1024=12%, Rehash=0, Collisions=26/163=16%
 
 # Pattern-specific Variable Values
 
@@ -280,7 +277,6 @@ obj/%.o: src/%.c
 # Files
 
 # Not a target:
- 
 my_lib/lib_my.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -337,7 +333,7 @@ all: philo
 
 philo: lib_my.a obj/main.o obj/sc_threading.o obj/threadator.o obj/thread_utils.o obj/routine.o obj/routine_utils.o obj/shinigami.o obj/init.o obj/validator.o obj/init_db.o obj/init_mutex.o obj/init_time.o obj/params_utils.o obj/sc_mutex.o obj/sc_time.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-01 20:02:18.86100418
+#  Last modified 2022-09-02 11:59:25.359833147
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -365,7 +361,7 @@ obj/main.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 20:02:06.144935172
+#  Last modified 2022-09-02 11:59:22.330816359
 #  File has been updated.
 #  Successfully updated.
 
@@ -462,6 +458,7 @@ clean:
 	$(RM) $(OBJ) $(BOBJ)
 
 # Not a target:
+ 
 obj/init.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -505,12 +502,12 @@ obj/sc_mutex.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 41 / storage = 424 B / avg = 10 B
-# current buf: size = 8162 B / used = 424 B / count = 41 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 427 B / avg = 10 B
+# current buf: size = 8162 B / used = 427 B / count = 41 / avg = 10 B
 
 # strcache performance: lookups = 81 / hit rate = 49%
 # hash-table stats:
 # Load=41/8192=1%, Rehash=0, Collisions=1/81=1%
-# Finished Make data base on Thu Sep  1 20:03:41 2022
+# Finished Make data base on Fri Sep  2 12:00:10 2022
 
  
