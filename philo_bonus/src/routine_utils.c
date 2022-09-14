@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:42:37 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/13 22:36:51 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/14 14:57:48 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,9 @@ time_t	update_cycle(t_philo *philo)
 {
 	time_t	cycle;
 
-	// pthread_mutex_lock(philo->cycle);
-	cycle = get_time();
 	sc_sem_wait(philo->s_cycle);
+	cycle = get_time();
 	philo->cycle_time = cycle;
 	sc_sem_post(philo->s_cycle);
-	// pthread_mutex_unlock(philo->cycle);
 	return (cycle);
 }

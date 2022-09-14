@@ -17,6 +17,7 @@ SRC		=	$(addsuffix .c, \
 	init_time \
 	params_utils \
 	sc_time \
+	snowden \
 )
 
 SRC_DIR	=	src

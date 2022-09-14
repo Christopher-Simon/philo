@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:45:44 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/13 22:38:34 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/14 18:09:56 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,37 @@ int	check_death_each(t_philo *philo, t_params *params,
 	int id, t_shinigami shini)
 {
 	int	ret;
+	int	i;
 
+	i = 0;
 	ret = 0;
 	sc_sem_wait(philo->s_cycle);
 	if (philo->cycle_time + shini.time_to_die < get_time())
 	{
 		sc_sem_wait(params->s_speak);
+		sc_sem_wait(philo->s_death);
 		ret = philo->death;
+		sc_sem_post(philo->s_death);
 		if (!ret)
 		{
 			philo->death = 1;
 			ret = 1;
 			printf("%ld %d %s\n", get_time() - philo->init_time, id, DIE);
 		}
-		// usleep(100000);
+		else
+		{
+			sc_sem_post(params->s_speak);
+			sc_sem_post(philo->s_cycle);
+			return (1);	
+		}
+		sc_sem_post(params->s_nowden);
+		printf("nb phio : %d\n", shini.nb_philo);
+		while (i < shini.nb_philo)
+		{
+			printf("%d\n", i);
+			sem_wait(params->s_all); //start at 0
+			i++;
+		}
 		sc_sem_post(params->s_speak);
 	}
 	sc_sem_post(philo->s_cycle);

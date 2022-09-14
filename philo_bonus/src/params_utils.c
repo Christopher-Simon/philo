@@ -6,18 +6,33 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:40:17 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/13 20:19:30 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/14 17:48:05 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-int	destroy_semaphores(t_params *params)
+int	destroy_semaphores(t_philo **philo_tab, t_params *params, int nb_philo)
 {
-	if (params->s_fork)
+	int	i;
+
+	i = 0;
+	while (i < nb_philo)
+	{
+		if (philo_tab && philo_tab[i] && philo_tab[i]->s_cycle)
+			sc_sem_close(philo_tab[i]->s_cycle);
+		if (philo_tab && philo_tab[i] && philo_tab[i]->s_death)
+			sc_sem_close(philo_tab[i]->s_death);
+		i++;
+	}
+	if (params && params->s_fork)
 		sc_sem_close(params->s_fork);
-	if (params->s_speak)
+	if (params && params->s_speak)
 		sc_sem_close(params->s_speak);
+	if (params && params->s_nowden)
+		sc_sem_close(params->s_nowden);
+	if (params && params->s_all)
+		sc_sem_close(params->s_all);
 	return (1);
 }
 
@@ -28,18 +43,22 @@ int	kill_philos(t_philo **philo_tab, int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
-		free(philo_tab[i]->cycle);
-		free(philo_tab[i]);
+		if (philo_tab && philo_tab[i] && philo_tab[i]->cycle)
+			free(philo_tab[i]->cycle);
+		if (philo_tab && philo_tab[i])
+			free(philo_tab[i]);
 		i++;
 	}
-	free(philo_tab);
+	if (philo_tab)
+		free(philo_tab);
 	return (0);
 }
 
-int	destroy_philo(t_philo **philo_tab, int nb_philo)
+int	destroy_philo(t_philo **philo_tab, t_params *params, int nb_philo)
 {
-	destroy_semaphores(philo_tab[0]->params);
-	free(philo_tab[0]->params);
+	destroy_semaphores(philo_tab, params, nb_philo);
+	if (params)
+		free(params);
 	kill_philos(philo_tab, nb_philo);
 	return (0);
 }

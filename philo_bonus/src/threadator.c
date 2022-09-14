@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threadator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:26:40 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/01 19:54:48 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:35:22 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	set_time_philo(t_philo **philo, int nb_philo, t_params *params)
 	i = 0;
 	start_time = get_time();
 	if (start_time == -1)
+	{
+		printf("First get_time failed, stopping here\n");
 		return (1);
+	}
 	params->init_time = start_time + 500;
 	while (i < nb_philo)
 	{

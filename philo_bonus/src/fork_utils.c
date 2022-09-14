@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:14:42 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/13 22:46:33 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/14 17:15:03 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	error_fork(void)
 	return (0);
 }
 
-int	hitman_philo(int *id, int nb_philo)
+int	hitman_philo(int *id, int nb_philo) 
 {
+	//TO DELETE
 	int	i;
 
 	i = 0;
