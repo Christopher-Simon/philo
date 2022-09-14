@@ -20,7 +20,10 @@ int	set_time_philo(t_philo **philo, int nb_philo, t_params *params)
 	i = 0;
 	start_time = get_time();
 	if (start_time == -1)
+	{
+		printf("First get_time failed, stopping here\n");
 		return (1);
+	}
 	params->init_time = start_time + 500;
 	while (i < nb_philo)
 	{
