@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:42:37 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/02 14:04:46 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/13 22:36:51 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ time_t	update_cycle(t_philo *philo)
 
 	// pthread_mutex_lock(philo->cycle);
 	cycle = get_time();
+	sc_sem_wait(philo->s_cycle);
 	philo->cycle_time = cycle;
+	sc_sem_post(philo->s_cycle);
 	// pthread_mutex_unlock(philo->cycle);
 	return (cycle);
 }

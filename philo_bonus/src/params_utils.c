@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   params_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:40:17 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/02 18:33:06 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/13 20:19:30 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	kill_philos(t_philo **philo_tab, int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
+		free(philo_tab[i]->cycle);
 		free(philo_tab[i]);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 13:42:22 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/02 12:10:47 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/13 21:16:04 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,34 @@ t_philo	*set_philo(char **argv, t_params *params)
 	return (philo);
 }
 
+int	add_cycle(t_philo **philo_tab, int nb_philo)
+{
+	int		i;
+	char	*sem_nb;
+
+	i = 0;
+	while (i < nb_philo) 
+	{
+		sem_nb = ft_itoa(philo_tab[i]->id);
+		if (!sem_nb)
+		{
+			while (--i >= 0)
+				free(philo_tab[i]->cycle);
+			return (1);
+		}
+		philo_tab[i]->cycle = ft_strjoin(CYCLE, sem_nb);
+		free(sem_nb);
+		if (!philo_tab[i]->cycle)
+		{
+			while (--i >= 0)
+				free(philo_tab[i]->cycle);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 t_philo	**get_philo(t_philo **philo_tab, char **argv, t_params *params)
 {
 	int		nb_philo;
@@ -64,13 +92,19 @@ t_philo	**get_philo(t_philo **philo_tab, char **argv, t_params *params)
 		{
 			while (--i >= 0)
 				free(philo_tab[i]);
-			return (NULL);
+			return (free(philo_tab), NULL);
 		}
 		philo_tab[i]->id = i;
 		philo_tab[i]->print_id = i + 1;
 		if (nb_philo % 2 == 1)
 			philo_tab[i]->impair = 1;
 		i++;
+	}
+	if (add_cycle(philo_tab, nb_philo))
+	{
+		while (--i >= 0)
+				free(philo_tab[i]);
+			return (free(philo_tab), NULL);
 	}
 	return (philo_tab);
 }

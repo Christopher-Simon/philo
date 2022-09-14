@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sc_semaphore.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:36:33 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/02 16:35:35 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/08 10:44:50 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	sc_sem_wait(sem_t *sem)
 
 int	sc_sem_post(sem_t *sem)
 {
-	if (sem_wait(sem) == -1)
+	if (sem_post(sem) == -1)
 	{
 		printf("failed post semaphore\n");
 		return (1);

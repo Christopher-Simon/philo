@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_db.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 16:28:40 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/02 14:05:19 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/08 10:43:45 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	print_philo(t_philo *philo)
 	printf("je suis le philo %d\n", philo->print_id);
 	printf("je suis le philo avec l'id %d\n", philo->id);
 	printf("Mon adresse est %p\n", philo);
+	printf("Mon param est %p\n", philo->params);
+	printf("Mon speak est %p\n", philo->params->s_speak);
+	printf("Mon fork est %p\n", philo->params->s_fork);
+	
 }
 
 void	print_all_philo(t_philo **philo, int nb_philo)

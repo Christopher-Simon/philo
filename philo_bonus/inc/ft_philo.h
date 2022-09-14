@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philo.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:52:20 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/02 18:32:36 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/13 22:45:41 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define DIE	"died"
 # define THINK	"is thinking"
 
+# define CYCLE	"SEMAPHORE_PHILO_CYCLE_"
 # define FORK	"SEMAPHORE_PHILO_FORK"
 # define SPEAK	"SEMAPHORE_PHILO_SPEAK"
 
@@ -41,7 +42,7 @@
 //DEFINE DEBUG
 
 # define DB_PARAMS	0
-# define DB_PHILO	0
+# define DB_PHILO	1
 # define DB_FORK	1
 # define DB_HADES	0
 
@@ -62,6 +63,8 @@ typedef struct s_params
 
 typedef struct s_philo
 {
+	sem_t			*s_cycle;
+	int				death;
 	int				id;
 	int				print_id;
 	t_params		*params;
@@ -74,12 +77,14 @@ typedef struct s_philo
 	int				round;
 	int				impair;
 	int				nb_philo;
+	char			*cycle;
 }	t_philo;
 
 typedef struct s_shinigami
 {
-	int	time_to_die;
-	int	nb_philo;
+	t_philo	*philo;
+	int		time_to_die;
+	int		nb_philo;
 }	t_shinigami;
 
 //SECURED THREADING
@@ -96,8 +101,9 @@ int			validator(char **argv);
 t_philo		**init_struct_philo(char **argv);
 int			destroy_philo(t_philo **philo, int nb_philo);
 int			destroy_semaphores(t_params *params);
-int			remove_semaphores(void);
-int 		init_semaphore(t_params *params, int nb_philo);
+int			remove_semaphores(t_philo **philo_tab, int nb_philo);
+int			init_semaphore(t_philo **philo_tab, t_params *params, int nb_philo);
+
 
 //INIT DB
 void		print_params(t_params *params);
@@ -115,7 +121,7 @@ int			create_shinigami(t_philo *philo, pthread_t *th_philo, int nb_philo);
 //FORKATOR
 int			forkator(t_philo **philo_tab, t_params *params, int nb_philo);
 int			create_fork(t_philo **philo_tab, t_params *params, int nb_philo);
-int			end_forks(int last_pid);
+int			end_forks(int *id, int nb_philo);
 
 //THREAD UTILS
 int			end_philo_thread(int nb, pthread_t *thread);
@@ -131,12 +137,15 @@ int			sc_sem_wait(sem_t *sem);
 
 //ROUTINE
 int			routine(t_philo *philo, t_params *params);
-int			speak(t_philo *philo, char *msg);
+int			speak(t_philo *philo, t_params *params, char *msg);
 int			saint_kro_start(t_philo *philo);
 int			is_dead(t_philo philo);
 int			is_one_dead(t_philo philo);
 time_t		update_cycle(t_philo *philo);
 int			net_usleep(time_t time_to_wait);
 
-int			shinigami(t_philo **philo, t_params *params, t_shinigami shini);
+//SHINIGAMI
+void	*shinigami(void *arg);
+int		init_shinigami(t_philo *philo);
+
 #endif
