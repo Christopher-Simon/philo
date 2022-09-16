@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:33:46 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/14 17:57:52 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/16 17:55:57 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,34 +97,51 @@ void	la_vie_du_philo(t_philo *philo, t_params *params)
 		if (philo_eat(philo, params))
 			break ;
 		if (philo->round != -1)
-		{
 			philo->round--;
-		}
 		if (philo->round == 0)
 		{
-			sc_sem_wait(philo->s_death);	
-			philo->death = 1;
-			sc_sem_post(philo->s_death);
-		//	philo->round--;
-		//	pthread_mutex_lock(&params->m_stop);
-		//	params->stop++;
-		//	pthread_mutex_unlock(&params->m_stop);
-		//	break ;
+			philo->round--;
+			sem_post(params->s_round);
 		}
 		if (philo_inception(philo, params))
 			break ;
 	}
 }
 
+void	failed_launch(t_philo *philo, t_params *params, pthread_t th_shinigami)
+{
+	printf("FAILED_LAUNCH\n");
+	saint_kro_start(philo);
+	sc_sem_wait(params->s_speak);
+	sc_sem_wait(philo->s_death);
+	philo->death = 1;
+	sc_sem_post(philo->s_death);
+	sc_sem_post(params->s_speak);
+	sc_sem_post(philo->params->s_nowden);
+	sc_sem_post(philo->params->s_round);
+	sc_pthread_join(th_shinigami, NULL);
+}
+
+void	routine_solo(t_philo *philo, t_params *params)
+{
+	time_t	wait;
+
+	saint_kro_start(philo);
+	speak(philo, params, TAKE);
+	wait = get_time() + philo->time_to_die;
+	net_usleep(wait);
+	speak(philo, params, DIE);
+	sc_sem_post(philo->params->s_end);
+	sc_sem_post(philo->params->s_round);
+}
+
 int	routine(t_philo *philo, t_params *params)
 {
-	
 	if (DB_FORK)
 	{
+		printf("in philo\n");
 		// print_philo(philo);
 	}
-	// if (philo->nb_philo == 1)
-	// 	return (speak(philo, params, TAKE), NULL);
 	t_shinigami	shini;
 	pthread_t	th_shinigami;
 	pthread_t	th_snowden;
@@ -132,10 +149,15 @@ int	routine(t_philo *philo, t_params *params)
 	shini.philo = philo;
 	shini.time_to_die = philo->time_to_die;
 	shini.nb_philo = philo->nb_philo;
+	if (philo->nb_philo == 1)
+		return (routine_solo(philo, params), 0);
 	if (sc_pthread_create(&th_shinigami, NULL, shinigami, &shini))
-		return (1); //PROCEDURE ARRET DES AUTRES Philo
+	{
+		printf("FAILED THREAD SHINI\n");
+		return (sc_sem_post(philo->params->s_nowden), 1); //PROCEDURE ARRET DES AUTRES Philo
+	}
 	if (sc_pthread_create(&th_snowden, NULL, snowden, philo))
-		return (1); //PROCEDURE ARRET DES AUTRES Philo et de L'autre thread	
+		return (failed_launch(philo, params, th_shinigami), 1);	
 	saint_kro_start(philo);
 	la_vie_du_philo(philo, params);
 	sc_pthread_join(th_shinigami, NULL);

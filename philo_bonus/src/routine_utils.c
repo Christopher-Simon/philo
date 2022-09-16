@@ -6,10 +6,11 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 13:42:37 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/14 14:57:48 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/16 17:56:07 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "ft_philo.h"
 
 int	saint_kro_start(t_philo *philo)

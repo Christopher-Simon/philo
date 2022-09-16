@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:52:20 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/14 17:47:12 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/16 17:22:24 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 # define SPEAK		"SEMAPHORE_PHILO_SPEAK"
 # define SNOWDEN	"SEMAPHORE_PHILO_SNOWDEN"
 # define ALL		"SEMAPHORE_PHILO_ALL"
+# define ROUND		"SEMAPHORE_PHILO_ROUND"
+# define END		"SEMAPHORE_PHILO_END"
+# define P_END		"SEMAPHORE_PHILO_P_END"
 
 # define START_DELAY 500
 # define GROUP_2_DELAY 10000
@@ -45,24 +48,28 @@
 //DEFINE DEBUG
 
 # define DB_PARAMS	0
-# define DB_PHILO	1
-# define DB_FORK	1
+# define DB_PHILO	0
+# define DB_FORK	0
 # define DB_HADES	0
 
 typedef struct s_params
 {
 	sem_t			*s_fork;
+	int				fork;
 	sem_t			*s_speak;
 	sem_t			*s_nowden;
 	sem_t			*s_all;
-	int				fork;
 	int				nb_philo;
 	int				death;
 	int				stop;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
+	sem_t			*s_round;
 	int				round;
+	sem_t			*s_end;
+	sem_t			*s_p_end;
+	int				end;
 	time_t			init_time;
 }	t_params;
 
@@ -157,5 +164,6 @@ int			init_shinigami(t_philo *philo);
 
 //SNOWDEN
 void	*snowden(void *arg);
+int		activate_snowden(t_params *params, int nb_philo);
 
 #endif

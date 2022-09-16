@@ -6,7 +6,7 @@
 /*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:14:42 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/14 17:15:03 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/16 17:33:34 by christopher      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,62 @@ int	end_forks(int *id, int nb_philo)
 	return (0);
 }
 
-int	error_fork(void)
+int	error_fork(t_params *params)
 {
 	printf("FAILED FORK\n");
-	//PAR LE SEMAPHORE DE DEATH
+	sc_sem_wait(params->s_speak);
+	usleep(15000);
+	sc_sem_post(params->s_nowden);
+	sc_sem_post(params->s_speak);
 	return (0);
 }
 
-int	hitman_philo(int *id, int nb_philo) 
+void	*round_end(void *arg)
 {
-	//TO DELETE
-	int	i;
+	t_params	*params;
 
+	params = (t_params *)arg;
+	sc_sem_wait(params->s_end);
+	sc_sem_wait(params->s_p_end);
+	params->end = 1;
+	sc_sem_post(params->s_p_end);
+	return (NULL);
+}
+
+void failed_wait_rounds(t_params *params)
+{
+	printf("FAILED THREAD WAIT ROUNDS\n");
+	sc_sem_wait(params->s_speak);
+	usleep(15000);
+	sc_sem_post(params->s_nowden);
+	sc_sem_post(params->s_speak);
+}
+
+int	wait_rounds(t_params *params, int nb_philo)
+{
+	int			i;
+	pthread_t	th_round_end;
+	int			ret;
+
+	if (sc_pthread_create(&th_round_end, NULL, round_end, params))
+		return(failed_wait_rounds(params), 1); //INTERRUPTION ALL
 	i = 0;
-	sleep(3);
+	ret = 0;
 	while (i < nb_philo)
 	{
-		kill(id[i], 2);
+		sc_sem_wait(params->s_round);
 		i++;
 	}
+	sc_sem_wait(params->s_p_end);
+	ret = params->end;
+	sc_sem_post(params->s_p_end);
+	if (!ret)
+	{
+		sc_sem_wait(params->s_speak);
+		activate_snowden(params, nb_philo);
+		sc_sem_post(params->s_speak);
+	}
+	sc_pthread_join(th_round_end, NULL);
 	return (0);
 }
 
@@ -60,17 +97,22 @@ int	create_fork(t_philo **philo_tab, t_params *params, int nb_philo)
 	{
 		id[i] = fork();
 		if (id[i] == -1)
-			error_fork();
+		{
+			error_fork(params);
+			break ;
+		}
 		if (id[i] == 0)
 		{
 			routine(philo_tab[i], params);
 			break ;
 		}
+		if (i + 1 == nb_philo)
+			break ;	
 		i++;
 	}
-	if (id != 0)
+	if (id[i] != 0)
 	{
-		// hitman_philo(id, nb_philo);
+		wait_rounds(params, nb_philo);
 		end_forks(id, nb_philo);
 	}
 	free(id);
