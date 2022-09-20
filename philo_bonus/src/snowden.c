@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   snowden.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:05:48 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/16 17:22:48 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:12:26 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	activate_snowden(t_params *params, int nb_philo)
 	while (i < nb_philo)
 	{
 		sc_sem_wait(params->s_all);
-		i++;		
+		i++;
 	}
 	return (0);
 }

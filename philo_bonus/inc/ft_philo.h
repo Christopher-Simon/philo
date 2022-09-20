@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philo.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:52:20 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/16 17:22:24 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:25:45 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PHILO_H
 # define FT_PHILO_H
 
-# include "ft_my_lib.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -43,7 +42,7 @@
 # define P_END		"SEMAPHORE_PHILO_P_END"
 
 # define START_DELAY 500
-# define GROUP_2_DELAY 10000
+# define GROUP_2_DELAY 60000
 
 //DEFINE DEBUG
 
@@ -111,13 +110,14 @@ int			sc_gettimeofday(struct timeval *restrict tv,
 				struct timezone *restrict tz);
 
 //INIT
+t_params	*get_params(char **argv);
 int			validator(char **argv);
 t_philo		**init_struct_philo(char **argv);
 int			destroy_philo(t_philo **philo, t_params *params, int nb_philo);
-int			destroy_semaphores(t_philo **philo_tab, t_params *params, int nb_philo);
+int			destroy_semaphores(t_philo **philo_tab, t_params *params, \
+int nb_philo);
 int			remove_semaphores(t_philo **philo_tab, int nb_philo);
 int			init_semaphore(t_philo **philo_tab, t_params *params, int nb_philo);
-
 
 //INIT DB
 void		print_params(t_params *params);
@@ -136,6 +136,8 @@ int			create_shinigami(t_philo *philo, pthread_t *th_philo, int nb_philo);
 int			forkator(t_philo **philo_tab, t_params *params, int nb_philo);
 int			create_fork(t_philo **philo_tab, t_params *params, int nb_philo);
 int			end_forks(int *id, int nb_philo);
+void		create_fork2(t_philo **philo_tab, t_params *params,
+				int nb_philo, int *id);
 
 //THREAD UTILS
 int			end_philo_thread(int nb, pthread_t *thread);
@@ -157,13 +159,27 @@ int			is_dead(t_philo philo);
 int			is_one_dead(t_philo philo);
 time_t		update_cycle(t_philo *philo);
 int			net_usleep(time_t time_to_wait);
+int			philo_eat(t_philo *philo, t_params *params);
 
 //SHINIGAMI
 void		*shinigami(void *arg);
 int			init_shinigami(t_philo *philo);
 
 //SNOWDEN
-void	*snowden(void *arg);
-int		activate_snowden(t_params *params, int nb_philo);
+void		*snowden(void *arg);
+int			activate_snowden(t_params *params, int nb_philo);
+
+//UTILS
+int			ft_atoi(const char *nptr);
+long int	ft_atol(const char *nptr);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+char		*ft_itoa(int n);
+char		*ft_strdup(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlen(const char *s);
+int			ft_isalpha(int c);
 
 #endif

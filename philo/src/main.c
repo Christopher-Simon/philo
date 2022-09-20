@@ -6,7 +6,7 @@
 /*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:41:05 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/01 20:06:52 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:19:01 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	philo(char **argv)
 
 int	main(int argc, char **argv)
 {
-	//CHECK LE RELINK DU MAKEFILE
 	if (argc < 5 || argc > 6)
 		return (1);
 	if (argv[5] && ft_atoi(argv[5]) == 0)

@@ -1,4 +1,4 @@
-NAME 	=	philo
+NAME 	=	philo_bonus
 
 SRC		=	$(addsuffix .c, \
 	main \
@@ -7,17 +7,30 @@ SRC		=	$(addsuffix .c, \
 	sc_semaphore \
 	forkator \
 	fork_utils \
+	fork_utils2 \
 	thread_utils \
 	routine \
+	routine2 \
 	routine_utils \
 	shinigami \
 	init \
+	init2 \
 	validator \
 	init_db \
 	init_time \
 	params_utils \
 	sc_time \
 	snowden \
+	utils/ft_atoi \
+	utils/ft_atol \
+	utils/ft_bzero \
+	utils/ft_calloc \
+	utils/ft_itoa \
+	utils/ft_strdup \
+	utils/ft_strjoin \
+	utils/ft_strlen \
+	utils/ft_strlcpy \
+	utils/ft_isalpha \
 )
 
 SRC_DIR	=	src
@@ -27,61 +40,39 @@ OBJ		=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 DEPS	=	$(OBJ:.o=.d)
 
-CC		=	gcc
+CC		=	cc
 CFLAGS 	=	-Wall -Wextra -Werror -g3 -g -pthread
 FCFLAGS =	-Wall -Wextra -Werror -g3 -fsanitize=thread -g -pthread
 
 RM 		=	rm -rf
 
-INCS 	=	-I inc -I my_lib/includes
-
-MY_LIB 	=	my_lib/lib_my.a
-
-PATH_LIB=	my_lib/
-LIB		=	lib_my.a
-MAKELIB	=	make -C $(PATH_LIB)
-
+INCS 	=	-I inc
 
 all : $(NAME)
 
-$(NAME) : $(LIB) $(OBJ) 
-	@$(CC) $(CFLAGS) $(OBJ) -L my_lib -o $@ $(INCS) -l_my
-
-$(LIB):
-	$(MAKELIB)
+$(NAME) : $(OBJ) 
+	$(CC) $(CFLAGS) $(OBJ)  -o $@ $(INCS)
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
-# my_lib/lib_my.a:
-# 	make -C my_lib all
-
-testf: $(MY_LIB) $(OBJ)
-	$(CC) $(FCFLAGS) $(OBJ) -L my_lib -o $(NAME) $(INCS) -l_my
+testf: $(OBJ)
+	$(CC) $(FCFLAGS) $(OBJ) -o $(NAME) $(INCS)
 	# @./$(NAME)
 
-testvre : all
-	make val
-	valgrind ./$(NAME)
-
 testv : all
-	make val
+	--tool=drd \
 	valgrind ./$(NAME)
 
 clean :	
-	make -C my_lib clean
 	$(RM) $(OBJ) $(BOBJ)
 
 fclean : clean
-	make -C my_lib fclean
 	$(RM) $(NAME)
-	$(RM) my_lib/lib_my.a
 
 re : 	
 		make fclean
 		make all
 
 .PHONY : all clean fclean re bonus
-
-.SILENT: all clean fclean re bonus testvre testv $(NAME) $(LIB)

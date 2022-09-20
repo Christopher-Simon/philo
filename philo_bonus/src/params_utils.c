@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   params_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:40:17 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/16 15:38:34 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:10:41 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-int	destroy_semaphores(t_philo **philo_tab, t_params *params, int nb_philo)
+void	destroy_big_sema(t_philo **philo_tab, int nb_philo)
 {
 	int	i;
 
@@ -25,6 +25,11 @@ int	destroy_semaphores(t_philo **philo_tab, t_params *params, int nb_philo)
 			sc_sem_close(philo_tab[i]->s_death);
 		i++;
 	}
+}
+
+int	destroy_semaphores(t_philo **philo_tab, t_params *params, int nb_philo)
+{
+	destroy_big_sema(philo_tab, nb_philo);
 	if (params && params->s_fork)
 		sc_sem_close(params->s_fork);
 	if (params && params->s_speak)

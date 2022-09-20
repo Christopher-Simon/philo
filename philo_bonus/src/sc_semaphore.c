@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   sc_semaphore.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:36:33 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/08 10:44:50 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:12:04 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
 
-sem_t	*sc_sem_open(const char *name, int oflag, mode_t mode, unsigned int value)
+sem_t	*sc_sem_open(const char *name, int oflag,
+					mode_t mode, unsigned int value)
 {
-	sem_t *semaphore;
+	sem_t	*semaphore;
 
-	semaphore = sem_open(name, oflag, mode, value); 
+	semaphore = sem_open(name, oflag, mode, value);
 	if (!semaphore)
 	{
 		printf("failed init semaphore\n");

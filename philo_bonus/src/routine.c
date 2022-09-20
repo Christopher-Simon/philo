@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:33:46 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/16 17:55:57 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:23:29 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_philo.h"
-
-//Pour le check de la mort, utiliser un 3eme thread, bloqué à un wait (sem init à 0)
-//Quand un philo meurt, il post, ce qui débloque les autres et met death à 1. 
-
-int	speak(t_philo *philo, t_params *params, char *msg)
-{
-	int		ret;
-
-	sc_sem_wait(params->s_speak);
-	sc_sem_wait(philo->s_death);
-	ret = philo->death;
-	sc_sem_post(philo->s_death);
-	if (!ret)
-		printf("%ld %d %s\n", 
-get_time() - philo->init_time, philo->print_id, msg);
-	sc_sem_post(params->s_speak);
-	return (ret);
-}
 
 int	philo_inception(t_philo *philo, t_params *params)
 {
@@ -47,41 +29,6 @@ int	philo_inception(t_philo *philo, t_params *params)
 		if (!ret)
 			net_usleep(wait);
 	}
-	return (ret);
-}
-
-int	take_fork(t_philo *philo, t_params *params)
-{
-	sc_sem_wait(params->s_fork);
-	speak(philo, params, TAKE);
-	sc_sem_wait(params->s_fork);
-	speak(philo, params, TAKE);
-	return (0);
-}
-
-void	release_fork(t_params *params)
-{
-	sc_sem_post(params->s_fork);
-	sc_sem_post(params->s_fork);
-}
-
-int		philo_eat(t_philo *philo, t_params *params)
-{
-	int		ret;
-	time_t	wait;
-
-	// if (philo->print_id % 2 == 0)
-	// 	ret = take_fork(philo, philo->fork, philo->next_fork);
-	// else
-	// 	ret = take_fork(philo, philo->next_fork, philo->fork);
-	// if (ret)
-	// 	return (ret);
-	take_fork(philo, params);
-	ret = speak(philo, params, EAT);
-	wait = update_cycle(philo) + philo->time_to_eat;
-	if (!ret)
-		net_usleep(wait);
-	release_fork(params);
 	return (ret);
 }
 
@@ -137,11 +84,6 @@ void	routine_solo(t_philo *philo, t_params *params)
 
 int	routine(t_philo *philo, t_params *params)
 {
-	if (DB_FORK)
-	{
-		printf("in philo\n");
-		// print_philo(philo);
-	}
 	t_shinigami	shini;
 	pthread_t	th_shinigami;
 	pthread_t	th_snowden;
@@ -154,14 +96,13 @@ int	routine(t_philo *philo, t_params *params)
 	if (sc_pthread_create(&th_shinigami, NULL, shinigami, &shini))
 	{
 		printf("FAILED THREAD SHINI\n");
-		return (sc_sem_post(philo->params->s_nowden), 1); //PROCEDURE ARRET DES AUTRES Philo
+		return (sc_sem_post(philo->params->s_nowden), 1);
 	}
 	if (sc_pthread_create(&th_snowden, NULL, snowden, philo))
-		return (failed_launch(philo, params, th_shinigami), 1);	
+		return (failed_launch(philo, params, th_shinigami), 1);
 	saint_kro_start(philo);
 	la_vie_du_philo(philo, params);
 	sc_pthread_join(th_shinigami, NULL);
 	sc_pthread_join(th_snowden, NULL);
-	// test_sema(philo, params);
 	return (0);
 }

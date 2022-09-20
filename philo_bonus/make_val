@@ -6,4 +6,5 @@ valgrind \
 --leak-check=full \
 --trace-children=yes \
 ./philo $1 $2 $3 $4 $5
-# --tool=helgrind \
+#--tool=helgrind \
+#-q \

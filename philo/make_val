@@ -1,0 +1,10 @@
+#!/bin/sh
+make -j 
+valgrind \
+--tool=helgrind \
+./philo $1 $2 $3 $4 $5
+#-q \
+#--show-leak-kinds=all \
+#--leak-check=full \
+#--track-origins=yes \
+#--trace-children=yes \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shinigami.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:45:44 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/16 17:34:14 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 16:13:39 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	set_death(t_philo *philo, int id)
 {
 	philo->death = 1;
 	printf("%ld %d %s\n", get_time() - philo->init_time, id, DIE);
-	return (1);		
+	return (1);
 }
 
 int	check_death_each(t_philo *philo, t_params *params,
-	int id, t_shinigami shini)
+						int id, t_shinigami shini)
 {
 	int	ret;
 
@@ -38,7 +38,7 @@ int	check_death_each(t_philo *philo, t_params *params,
 			sc_sem_post(philo->s_death);
 			sc_sem_post(params->s_speak);
 			sc_sem_post(philo->s_cycle);
-			return (1);	
+			return (1);
 		}
 		sc_sem_post(philo->s_death);
 		activate_snowden(params, shini.nb_philo);
@@ -61,7 +61,8 @@ void	*shinigami(void *arg)
 	}
 	while (1)
 	{
-		if (check_death_each(shini.philo, shini.philo->params, shini.philo->print_id,shini))
+		if (check_death_each(shini.philo, shini.philo->params, \
+shini.philo->print_id, shini))
 			break ;
 		usleep(3000);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_semaphore.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 15:03:17 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/16 17:23:14 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 15:51:03 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	del_sem(const char *name)
 {
 	sem_t	*semaphore;
 
-	// printf("%s\n", name);
 	semaphore = sem_open(name, 0);
 	if (semaphore)
 	{
@@ -31,7 +30,7 @@ int	remove_semaphores(t_philo **philo_tab, int nb_philo)
 	int	i;
 
 	i = 0;
-	while(i < nb_philo)
+	while (i < nb_philo)
 	{
 		del_sem(philo_tab[i]->cycle);
 		del_sem(philo_tab[i]->name_death);
@@ -54,11 +53,12 @@ int	open_semaphores(t_philo **philo_tab, int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
-		// printf("create sem %s\n", philo_tab[i]->cycle);
-		philo_tab[i]->s_death = sc_sem_open(philo_tab[i]->name_death, O_CREAT, 0755, 1);
+		philo_tab[i]->s_death = sc_sem_open(philo_tab[i]->name_death,
+				O_CREAT, 0755, 1);
 		if (!philo_tab[i]->s_death)
 			return (1);
-		philo_tab[i]->s_cycle = sc_sem_open(philo_tab[i]->cycle, O_CREAT, 0755, 1);
+		philo_tab[i]->s_cycle = sc_sem_open(philo_tab[i]->cycle,
+				O_CREAT, 0755, 1);
 		if (!philo_tab[i]->s_cycle)
 			return (1);
 		i++;

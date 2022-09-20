@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forkator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: christopher <christopher@student.42.fr>    +#+  +:+       +#+        */
+/*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:26:40 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/14 14:48:28 by christopher      ###   ########.fr       */
+/*   Updated: 2022/09/20 15:44:13 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ int	forkator(t_philo **philo_tab, t_params *params, int nb_philo)
 		return (1);
 	if (create_fork(philo_tab, params, nb_philo))
 		return (1);
-	// shinigami(philo_tab, params, shini);
 	return (0);
 }

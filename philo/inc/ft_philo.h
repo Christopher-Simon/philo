@@ -6,14 +6,13 @@
 /*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:52:20 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/02 11:47:59 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/20 16:17:16 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PHILO_H
 # define FT_PHILO_H
 
-# include "ft_my_lib.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -126,6 +125,22 @@ int			is_dead(t_philo philo);
 int			is_one_dead(t_philo philo);
 time_t		update_cycle(t_philo *philo);
 int			net_usleep(time_t time_to_wait);
+int			philo_eat(t_philo *philo);
 
+//SHINIGAMI
 int			shinigami(t_philo **philo, t_params *params, t_shinigami shini);
+
+//UTILS
+int			ft_atoi(const char *nptr);
+long int	ft_atol(const char *nptr);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+char		*ft_itoa(int n);
+char		*ft_strdup(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlen(const char *s);
+int			ft_isalpha(int c);
+
 #endif
