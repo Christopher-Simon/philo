@@ -6,7 +6,7 @@
 /*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:24:37 by chsimon           #+#    #+#             */
-/*   Updated: 2022/09/20 16:25:18 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/26 13:25:33 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	create_fork2(t_philo **philo_tab, t_params *params,
 {
 	int	i;
 
-	i = 0;
-	while (i < nb_philo)
+	i = -1;
+	while (++i < nb_philo)
 	{
 		id[i] = fork();
 		if (id[i] == -1)
@@ -92,11 +92,11 @@ void	create_fork2(t_philo **philo_tab, t_params *params,
 		}
 		if (i + 1 == nb_philo)
 			break ;
-		i++;
 	}
 	if (id[i] != 0)
 	{
-		wait_rounds(params, nb_philo);
+		if (nb_philo != 1)
+			wait_rounds(params, nb_philo);
 		end_forks(id, nb_philo);
 	}
 }

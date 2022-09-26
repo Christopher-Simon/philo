@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Sep 20 16:28:24 2022
+# Make data base, printed on Mon Sep 26 16:31:14 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 VSCODE_CWD = /mnt/nfs/homes/chsimon/philo
 # environment
-TERMINATOR_UUID = urn:uuid:fae91729-8fea-47d1-aa22-341b4d8abb5a
+TERMINATOR_UUID = urn:uuid:049b0d36-7ae1-4eb5-a895-7e6df6b29a0c
 # environment
 LIBVIRT_DEFAULT_URI = qemu:///system
 # default
@@ -55,7 +55,7 @@ OLDPWD = /mnt/nfs/homes/chsimon
 # environment
 VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/chsimon/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session7
 # environment
 LANG = C
 # environment
@@ -93,15 +93,15 @@ MAKEFILE_LIST :=
 # environment
 ZSH = /mnt/nfs/homes/chsimon/.oh-my-zsh
 # environment
-VSCODE_PID = 142620
+VSCODE_PID = 818982
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_40599_3D7DfX
+KRB5CCNAME = FILE:/tmp/krb5cc_40599_X2pPau
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/e1r9p5.clusters.42paris.fr:@/tmp/.ICE-unix/85376,unix/e1r9p5.clusters.42paris.fr:/tmp/.ICE-unix/85376
+SESSION_MANAGER = local/e1r7p2.clusters.42paris.fr:@/tmp/.ICE-unix/755402,unix/e1r7p2.clusters.42paris.fr:/tmp/.ICE-unix/755402
 # automatic
 *F = $(notdir $*)
 # environment
@@ -137,7 +137,7 @@ MAKEFILES :=
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = 98675b9b998c46e1bd5841debeada844
+INVOCATION_ID = bad8881a71e74070903be92c860258d0
 # environment
 DOCKER_HOST = unix:///run/user/40599/docker.sock
 # automatic
@@ -163,7 +163,7 @@ LOGNAME = chsimon
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 85548
+SYSTEMD_EXEC_PID = 755638
 # environment
 DISPLAY = :0
 # environment
@@ -175,9 +175,9 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKE_VERSION := 4.3
 # environment
-MANAGERPID = 84800
+MANAGERPID = 754825
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 142518
+GIO_LAUNCHED_DESKTOP_FILE_PID = 778581
 # environment
 PAGER = less
 # environment
@@ -189,7 +189,7 @@ GPG_AGENT_INFO = /run/user/40599/gnupg/S.gpg-agent:0:1
 # environment
 COLORTERM = truecolor
 # environment
-JOURNAL_STREAM = 8:284607
+JOURNAL_STREAM = 8:3513992
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -292,6 +292,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/17=0%
-# Finished Make data base on Tue Sep 20 16:28:24 2022
+# Finished Make data base on Mon Sep 26 16:31:14 2022
 
  

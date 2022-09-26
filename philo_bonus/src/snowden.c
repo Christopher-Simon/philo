@@ -6,7 +6,7 @@
 /*   By: chsimon <chsimon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:05:48 by christopher       #+#    #+#             */
-/*   Updated: 2022/09/20 16:12:26 by chsimon          ###   ########.fr       */
+/*   Updated: 2022/09/26 16:31:40 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	*snowden(void *arg)
 	sc_sem_post(philo->s_death);
 	sc_sem_post(philo->params->s_all);
 	sc_sem_post(philo->params->s_end);
+	usleep(1000);
 	sc_sem_post(philo->params->s_round);
 	sc_sem_post(philo->params->s_nowden);
 	return (NULL);

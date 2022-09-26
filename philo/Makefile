@@ -62,7 +62,7 @@ testv : all
 	valgrind ./$(NAME)
 
 clean :	
-	$(RM) $(OBJ) $(BOBJ)
+	$(RM) $(OBJ) $(OBJ_DIR)
 
 fclean : clean
 	$(RM) $(NAME)
